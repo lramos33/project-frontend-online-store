@@ -4,7 +4,6 @@ import React, { Component } from 'react';
 export class PorductCard extends Component {
   render() {
     const { whichProduct } = this.props;
-    console.log(whichProduct);
     return (
       <div data-testid="product">
         <p>{whichProduct.title}</p>
@@ -17,7 +16,7 @@ export class PorductCard extends Component {
 
 PorductCard.propTypes = {
   whichProduct: PropTypes.shape({
-    price: PropTypes.string,
+    price: PropTypes.number,
     thumbnail: PropTypes.string,
     title: PropTypes.string,
   }).isRequired,
