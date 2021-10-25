@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { getProductsFromCategoryAndQuery } from '../services/api';
-import ProductCard from '../components/PorductCard';
+import ProductCard from '../components/ProductCard';
+import Category from '../components/Categories';
 
 export class ProductList extends Component {
   constructor(props) {
@@ -51,6 +52,7 @@ export class ProductList extends Component {
           </h3>
           <Link data-testid="shopping-cart-button" to="/shopping-cart">Carrinho</Link>
         </header>
+        <Category />
         <section>
           {products.map((whichProduct) => (
             <ProductCard
