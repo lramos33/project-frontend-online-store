@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { getProductsFromCategoryAndQuery } from '../services/api';
+import ProductCard from './PorductCard';
 
 export class ProductList extends Component {
   constructor(props) {
@@ -16,7 +17,7 @@ export class ProductList extends Component {
     const { searchInput } = this.state;
     const fetchedProducts = await getProductsFromCategoryAndQuery(category, searchInput);
     if (fetchedProducts) {
-      this.setState({products: fetchedProducts.results});
+      this.setState({ products: fetchedProducts.results });
     }
   }
 
@@ -51,9 +52,9 @@ export class ProductList extends Component {
           <Link data-testid="shopping-cart-button" to="/shopping-cart">Carrinho</Link>
         </header>
         <section>
-          {/* {products.map((whichProduct) => (
-            // <ProductCard key={ whichProduct.id } { ...whichProduct } />
-          ))} */}
+          {products.map((whichProduct) => (
+            <ProductCard key={ whichProduct.id } { ...whichProduct } whichProduct={ whichProduct } />
+          ))}
         </section>
       </div>
     );
