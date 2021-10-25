@@ -53,7 +53,11 @@ export class ProductList extends Component {
         </header>
         <section>
           {products.map((whichProduct) => (
-            <ProductCard key={ whichProduct.id } { ...whichProduct } whichProduct={ whichProduct } />
+            <ProductCard
+              key={ whichProduct.id }
+              { ...whichProduct }
+              whichProduct={ whichProduct }
+            />
           ))}
         </section>
       </div>

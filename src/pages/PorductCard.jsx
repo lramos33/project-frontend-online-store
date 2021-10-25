@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
 export class PorductCard extends Component {
@@ -13,5 +14,13 @@ export class PorductCard extends Component {
     );
   }
 }
+
+PorductCard.propTypes = {
+  whichProduct: PropTypes.shape({
+    price: PropTypes.string,
+    thumbnail: PropTypes.string,
+    title: PropTypes.string,
+  }).isRequired,
+};
 
 export default PorductCard;
