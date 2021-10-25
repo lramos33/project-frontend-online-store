@@ -7,14 +7,17 @@ export class ProductList extends Component {
     super(props);
     this.state = {
       searchInput: '',
+      products: [],
     };
   }
 
   fetchProductAPI = async () => {
-    const category = 'MLB271599';
+    const category = '';
     const { searchInput } = this.state;
     const fetchedProducts = await getProductsFromCategoryAndQuery(category, searchInput);
-    console.log(fetchedProducts);
+    if (fetchedProducts) {
+      this.setState({products: fetchedProducts.results});
+    }
   }
 
   handleChange = (whichInput) => {
@@ -25,6 +28,7 @@ export class ProductList extends Component {
   }
 
   render() {
+    const { products } = this.state;
     return (
       <div>
         <header>
@@ -47,7 +51,9 @@ export class ProductList extends Component {
           <Link data-testid="shopping-cart-button" to="/shopping-cart">Carrinho</Link>
         </header>
         <section>
-          <span>Conteudo</span>
+          {/* {products.map((whichProduct) => (
+            // <ProductCard key={ whichProduct.id } { ...whichProduct } />
+          ))} */}
         </section>
       </div>
     );
