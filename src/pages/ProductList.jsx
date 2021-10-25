@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch, NavLink, Link, BrowserRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 export class ProductList extends Component {
   render() {
     return (
