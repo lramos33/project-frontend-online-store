@@ -22,17 +22,23 @@ class Categories extends React.Component {
   render() {
     const { allCategories } = this.state;
 
-    return(
+    return (
       <div>
         {allCategories.map((element) => (
           <ul key={ element.id }>
-            <label htmlFor={ element.name }> { element.name }
-              <input type="radio" id={ element.name } name="category" data-testid="category"></input>
+            <label htmlFor={ element.name }>
+              { element.name }
+              <input
+                type="radio"
+                id={ element.name }
+                name="category"
+                data-testid="category"
+              />
             </label>
           </ul>
         ))}
       </div>
-    )
+    );
   }
 }
 
