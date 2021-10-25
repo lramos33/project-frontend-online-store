@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
-export class PorductCard extends Component {
+class ProductCard extends Component {
   render() {
     const { whichProduct } = this.props;
     return (
@@ -14,7 +14,7 @@ export class PorductCard extends Component {
   }
 }
 
-PorductCard.propTypes = {
+ProductCard.propTypes = {
   whichProduct: PropTypes.shape({
     price: PropTypes.number,
     thumbnail: PropTypes.string,
@@ -22,4 +22,4 @@ PorductCard.propTypes = {
   }).isRequired,
 };
 
-export default PorductCard;
+export default ProductCard;
