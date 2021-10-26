@@ -6,19 +6,21 @@ class ProductCard extends Component {
   render() {
     const { whichProduct } = this.props;
     return (
-      <Link
-        data-testid="product-detail-link"
-        to={ {
-          pathname: `/product/${whichProduct.id}`,
-          state: { ...whichProduct },
-        } }
-      >
-        <div data-testid="product">
-          <p>{whichProduct.title}</p>
-          <img src={ whichProduct.thumbnail } alt="Imagem do Produto" />
-          <p>{whichProduct.price}</p>
-        </div>
-      </Link>
+      <div className="productCardWrapper">
+        <Link
+          data-testid="product-detail-link"
+          to={ {
+            pathname: `/product/${whichProduct.id}`,
+            state: { ...whichProduct },
+          } }
+        >
+          <div data-testid="product">
+            <p>{whichProduct.title}</p>
+            <img src={ whichProduct.thumbnail } alt="Imagem do Produto" />
+            <p>{whichProduct.price}</p>
+          </div>
+        </Link>
+      </div>
     );
   }
 }

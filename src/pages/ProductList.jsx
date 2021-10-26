@@ -53,16 +53,18 @@ export class ProductList extends Component {
           </h3>
           <Link data-testid="shopping-cart-button" to="/shopping-cart">Carrinho</Link>
         </header>
-        <Categories />
-        <section>
-          {products.map((whichProduct) => (
-            <ProductCard
-              key={ whichProduct.id }
-              { ...whichProduct }
-              whichProduct={ whichProduct }
-            />
-          ))}
-        </section>
+        <main>
+          <Categories />
+          <section className="cardBox">
+            {products.map((whichProduct) => (
+              <ProductCard
+                key={ whichProduct.id }
+                { ...whichProduct }
+                whichProduct={ whichProduct }
+              />
+            ))}
+          </section>
+        </main>
       </div>
     );
   }
