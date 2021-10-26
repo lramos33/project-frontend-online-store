@@ -1,4 +1,5 @@
 import React from 'react';
+import { getProductsFromCategoryAndQuery } from '../services/api';
 import { getCategories } from '../services/api';
 
 class Categories extends React.Component {
@@ -7,16 +8,27 @@ class Categories extends React.Component {
 
     this.state = {
       allCategories: [],
+      currentCategory: '',
     };
   }
 
+  // Requisito 04
   componentDidMount() {
     this.allCategories();
   }
 
+  // Requisito 04
   allCategories = async () => {
     const allCategories = await getCategories();
     this.setState({ allCategories });
+  }
+
+  // Requisito 06
+  onClickCategory = ({target}) => {
+    const { id } = target;
+    this.setState({ 
+      currentCategory: id
+    });
   }
 
   render() {
@@ -26,13 +38,14 @@ class Categories extends React.Component {
       <div>
         {allCategories.map((element) => (
           <ul key={ element.id }>
-            <label htmlFor={ element.name }>
+            <label htmlFor={ element.name } >
               { element.name }
               <input
                 type="radio"
-                id={ element.name }
+                id={ element.id }
                 name="category"
                 data-testid="category"
+                onChange= { this.onClickCategory }
               />
             </label>
           </ul>
