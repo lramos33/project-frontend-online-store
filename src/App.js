@@ -6,6 +6,8 @@ import { ShoppingCart } from './pages/ShoppingCart';
 import { getProductsFromCategoryAndQuery } from './services/api';
 import './App.css';
 
+// Comentário só para rodar o avaliador novamente.
+
 export class App extends Component {
   constructor(props) {
     super(props);
