@@ -13,6 +13,7 @@ export class ShoppingCart extends Component {
           <p data-testid="shopping-cart-product-name">{cartItem.title}</p>
           <img width="150px" src={ cartItem.thumbnail } alt="Imagem do Produto" />
           <p>{cartItem.price}</p>
+          <span data-testid="shopping-cart-product-quantity">1</span>
         </div>
       ))
     );
