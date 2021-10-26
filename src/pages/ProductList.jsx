@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import ProductCard from '../components/ProductCard';
 import Categories from '../components/Categories';
 
-export class ProductList extends Component {
+class ProductList extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,7 +20,7 @@ export class ProductList extends Component {
   }
 
   render() {
-    const { products, fetcher } = this.props;
+    const { products, fetcher, categoryClick, currentCategory } = this.props;
     const { searchInput } = this.state;
     return (
       <div>
@@ -34,7 +34,7 @@ export class ProductList extends Component {
           <button
             data-testid="query-button"
             type="submit"
-            onClick={ () => fetcher('', searchInput) }
+            onClick={ () => fetcher(currentCategory, searchInput) }
           >
             Procurar
           </button>
@@ -44,12 +44,11 @@ export class ProductList extends Component {
           <Link data-testid="shopping-cart-button" to="/shopping-cart">Carrinho</Link>
         </header>
         <main>
-          <Categories />
+          <Categories clickFunc={ categoryClick } />
           <section className="cardBox">
             {products.map((whichProduct) => (
               <ProductCard
                 key={ whichProduct.id }
-                { ...whichProduct }
                 whichProduct={ whichProduct }
               />
             ))}
@@ -62,7 +61,14 @@ export class ProductList extends Component {
 
 ProductList.propTypes = {
   fetcher: PropTypes.func.isRequired,
+  categoryClick: PropTypes.func.isRequired,
   products: PropTypes
     .arrayOf(PropTypes.object).isRequired,
+  currentCategory: PropTypes.string,
 };
+
+ProductList.defaultProps = {
+  currentCategory: '',
+};
+
 export default ProductList;

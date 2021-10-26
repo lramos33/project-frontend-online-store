@@ -1,14 +1,12 @@
 import React from 'react';
-import { getProductsFromCategoryAndQuery } from '../services/api';
+import PropTypes from 'prop-types';
 import { getCategories } from '../services/api';
 
 class Categories extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       allCategories: [],
-      currentCategory: '',
     };
   }
 
@@ -23,29 +21,21 @@ class Categories extends React.Component {
     this.setState({ allCategories });
   }
 
-  // Requisito 06
-  onClickCategory = ({target}) => {
-    const { id } = target;
-    this.setState({ 
-      currentCategory: id
-    });
-  }
-
   render() {
     const { allCategories } = this.state;
-
+    const { clickFunc } = this.props;
     return (
       <div>
         {allCategories.map((element) => (
           <ul key={ element.id }>
-            <label htmlFor={ element.name } >
+            <label htmlFor={ element.name }>
               { element.name }
               <input
                 type="radio"
                 id={ element.id }
                 name="category"
                 data-testid="category"
-                onChange= { this.onClickCategory }
+                onChange={ (target) => clickFunc(target) }
               />
             </label>
           </ul>
@@ -54,5 +44,9 @@ class Categories extends React.Component {
     );
   }
 }
+
+Categories.propTypes = {
+  clickFunc: PropTypes.func.isRequired,
+};
 
 export default Categories;
