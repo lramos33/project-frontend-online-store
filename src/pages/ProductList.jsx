@@ -20,7 +20,6 @@ export class ProductList extends Component {
     if (fetchedProducts) {
       this.setState({ products: fetchedProducts.results });
     }
-    console.log('fetched');
   }
 
   handleChange = (whichInput) => {
