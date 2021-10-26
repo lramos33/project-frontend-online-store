@@ -9,8 +9,10 @@ import './App.css';
 export class App extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       products: [],
+      shopCart: [],
     };
   }
 
@@ -24,8 +26,13 @@ export class App extends Component {
     }
   };
 
+  addProduct = async (product) => {
+    const { shopCart } = this.state;
+    this.setState({ shopCart: [...shopCart, product] });
+  }
+
   render() {
-    const { products } = this.state;
+    const { products, shopCart } = this.state;
     return (
       <BrowserRouter>
         <Switch>
@@ -37,13 +44,14 @@ export class App extends Component {
                 { ...props }
                 fetcher={ this.fetchProductAPI }
                 products={ products }
+                addProduct={ this.addProduct }
               />
             ) }
           />
           <Route
             exact
             path="/shopping-cart"
-            render={ (props) => <ShoppingCart { ...props } /> }
+            render={ (props) => <ShoppingCart { ...props } shopCart={ shopCart } /> }
           />
           <Route exact path="/product/:id" component={ ProductDetail } />
         </Switch>

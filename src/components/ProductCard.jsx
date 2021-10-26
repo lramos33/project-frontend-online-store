@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import AddCart from './AddCart';
 
 class ProductCard extends Component {
   render() {
-    const { whichProduct } = this.props;
+    const { whichProduct, addProduct } = this.props;
     return (
       <div className="productCardWrapper">
         <Link
@@ -20,12 +21,14 @@ class ProductCard extends Component {
             <p>{whichProduct.price}</p>
           </div>
         </Link>
+        <AddCart whichProduct={ whichProduct } addProduct={ addProduct } />
       </div>
     );
   }
 }
 
 ProductCard.propTypes = {
+  addProduct: PropTypes.func.isRequired,
   whichProduct: PropTypes.shape({
     price: PropTypes.number,
     thumbnail: PropTypes.string,

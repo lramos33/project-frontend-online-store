@@ -20,7 +20,7 @@ export class ProductList extends Component {
   }
 
   render() {
-    const { products, fetcher } = this.props;
+    const { products, fetcher, addProduct } = this.props;
     const { searchInput } = this.state;
     return (
       <div>
@@ -51,6 +51,7 @@ export class ProductList extends Component {
                 key={ whichProduct.id }
                 { ...whichProduct }
                 whichProduct={ whichProduct }
+                addProduct={ addProduct }
               />
             ))}
           </section>
@@ -62,6 +63,7 @@ export class ProductList extends Component {
 
 ProductList.propTypes = {
   fetcher: PropTypes.func.isRequired,
+  addProduct: PropTypes.func.isRequired,
   products: PropTypes
     .arrayOf(PropTypes.object).isRequired,
 };
