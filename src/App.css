@@ -48,14 +48,14 @@ main {
 
 .cardBox {
   display: flex;
-  flex-direction: row;
+  flex-flow: row;
   flex-wrap: wrap;
-  width:70%;
+  width: 70%;
 }
 
 .productCardWrapper {
-  flex-basis: 100px;
-  height:500px;
-  flex-shrink: 0;
   border: 1px solid black;
+  flex-basis: 100px;
+  flex-shrink: 0;
+  height: 500px;
 }
