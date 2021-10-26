@@ -62,8 +62,7 @@ export class ProductList extends Component {
 
 ProductList.propTypes = {
   fetcher: PropTypes.func.isRequired,
-  products: PropTypes.shape({
-    map: PropTypes.func,
-  }).isRequired,
+  products: PropTypes
+    .arrayOf(PropTypes.object).isRequired,
 };
 export default ProductList;
