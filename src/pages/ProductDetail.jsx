@@ -6,14 +6,14 @@ class ProductDetail extends Component {
     super(props);
     // const { location: { state: productInfo } } = this.props;
     console.log(this.props);
-    this.state = {
-      productObject: productInfo,
-    };
+    // this.state = {
+    //   productObject: productInfo,
+    // };
   }
 
   render() {
     // const {
-      // productObject: { currency_id: currencyId, price, thumbnail, title } } = this.state;
+    // productObject: { currency_id: currencyId, price, thumbnail, title } } = this.state;
     return (
       <div>
         {/* <h2 data-testid="product-detail-name">
@@ -28,10 +28,10 @@ class ProductDetail extends Component {
   }
 }
 
-// ProductDetail.propTypes = {
-//   location: PropTypes.shape({
-//     state: PropTypes.objectOf(PropTypes.any),
-//   }).isRequired,
-// };
+ProductDetail.propTypes = {
+  location: PropTypes.shape({
+    state: PropTypes.objectOf(PropTypes.any),
+  }).isRequired,
+};
 
 export default ProductDetail;

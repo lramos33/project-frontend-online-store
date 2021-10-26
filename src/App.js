@@ -33,7 +33,7 @@ export class App extends Component {
   };
 
   // Requisito 06
-  onClickCategory = ({target}) => {
+  onClickCategory = ({ target }) => {
     const { id } = target;
     this.setState({
       currentCategory: id,
@@ -66,7 +66,12 @@ export class App extends Component {
           <Route
             exact
             path="/product/:id"
-            render={ () => <ProductDetail fetcher={ this.fetchProductAPI } /> }
+            render={ (props) => (
+              <ProductDetail
+                { ...props }
+                fetcher={ this.fetchProductAPI }
+                currentCategory={ currentCategory }
+              />) }
           />
         </Switch>
       </BrowserRouter>
