@@ -18,7 +18,7 @@ export class ShoppingCart extends Component {
     );
   }
 }
-
+//
 ShoppingCart.propTypes = {
   shopCart: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
