@@ -20,7 +20,7 @@ class ProductList extends Component {
   }
 
   render() {
-    const { products, fetcher, categoryClick, currentCategory } = this.props;
+    const { products, fetcher, categoryClick, currentCategory, addProduct } = this.props;
     const { searchInput } = this.state;
     return (
       <div>
@@ -50,6 +50,7 @@ class ProductList extends Component {
               <ProductCard
                 key={ whichProduct.id }
                 whichProduct={ whichProduct }
+                addProduct={ addProduct }
               />
             ))}
           </section>
@@ -62,6 +63,7 @@ class ProductList extends Component {
 ProductList.propTypes = {
   fetcher: PropTypes.func.isRequired,
   categoryClick: PropTypes.func.isRequired,
+  addProduct: PropTypes.func.isRequired,
   products: PropTypes
     .arrayOf(PropTypes.object).isRequired,
   currentCategory: PropTypes.string,
