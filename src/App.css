@@ -40,3 +40,22 @@
     transform: rotate(360deg);
   }
 }
+
+main {
+  display: flex;
+  flex-direction: row;
+}
+
+.cardBox {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width:70%;
+}
+
+.productCardWrapper {
+  flex-basis: 100px;
+  height:500px;
+  flex-shrink: 0;
+  border: 1px solid black;
+}

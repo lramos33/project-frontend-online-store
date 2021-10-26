@@ -1,6 +1,6 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { getProductsFromCategoryAndQuery } from '../services/api';
 import ProductCard from '../components/ProductCard';
 import Categories from '../components/Categories';
 
@@ -9,17 +9,7 @@ export class ProductList extends Component {
     super(props);
     this.state = {
       searchInput: '',
-      products: [],
     };
-  }
-
-  fetchProductAPI = async () => {
-    const category = '';
-    const { searchInput } = this.state;
-    const fetchedProducts = await getProductsFromCategoryAndQuery(category, searchInput);
-    if (fetchedProducts) {
-      this.setState({ products: fetchedProducts.results });
-    }
   }
 
   handleChange = (whichInput) => {
@@ -30,7 +20,8 @@ export class ProductList extends Component {
   }
 
   render() {
-    const { products } = this.state;
+    const { products, fetcher } = this.props;
+    const { searchInput } = this.state;
     return (
       <div>
         <header>
@@ -43,7 +34,7 @@ export class ProductList extends Component {
           <button
             data-testid="query-button"
             type="submit"
-            onClick={ this.fetchProductAPI }
+            onClick={ () => fetcher('', searchInput) }
           >
             Procurar
           </button>
@@ -52,18 +43,26 @@ export class ProductList extends Component {
           </h3>
           <Link data-testid="shopping-cart-button" to="/shopping-cart">Carrinho</Link>
         </header>
-        <Categories />
-        <section>
-          {products.map((whichProduct) => (
-            <ProductCard
-              key={ whichProduct.id }
-              { ...whichProduct }
-              whichProduct={ whichProduct }
-            />
-          ))}
-        </section>
+        <main>
+          <Categories />
+          <section className="cardBox">
+            {products.map((whichProduct) => (
+              <ProductCard
+                key={ whichProduct.id }
+                { ...whichProduct }
+                whichProduct={ whichProduct }
+              />
+            ))}
+          </section>
+        </main>
       </div>
     );
   }
 }
+
+ProductList.propTypes = {
+  fetcher: PropTypes.func.isRequired,
+  products: PropTypes
+    .arrayOf(PropTypes.object).isRequired,
+};
 export default ProductList;
