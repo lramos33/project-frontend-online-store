@@ -5,14 +5,13 @@ class AddCart extends Component {
   render() {
     const { addProduct, whichProduct } = this.props;
     return (
-      <div data-testid="product-add-to-cart">
-        <button
-          type="button"
-          onClick={ () => addProduct(whichProduct) }
-        >
-          Add
-        </button>
-      </div>
+      <button
+        data-testid="product-add-to-cart"
+        type="button"
+        onClick={ () => addProduct(whichProduct) }
+      >
+        Add
+      </button>
     );
   }
 }
