@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { getProductsFromCategoryAndQuery } from '../services/api';
+import AddCart from '../components/AddCart';
 
 class ProductDetail extends Component {
   constructor(props) {
@@ -32,8 +34,9 @@ class ProductDetail extends Component {
   }
 
   render() {
-    const {
-      productObject: { currency_id: currencyId, price, thumbnail, title } } = this.state;
+    const { productObject } = this.state;
+    const { currency_id: currencyId, price, thumbnail, title } = productObject;
+    const { addProduct } = this.props;
     return (
       <div>
         <h2 data-testid="product-detail-name">
@@ -43,15 +46,20 @@ class ProductDetail extends Component {
           {`${currencyId} ${price}`}
         </h3>
         <img src={ thumbnail } alt={ title } />
+        <AddCart
+          testID="product-detail-add-to-cart"
+          whichProduct={ productObject }
+          addProduct={ addProduct }
+        />
+        <Link data-testid="shopping-cart-button" to="/shopping-cart">Carrinho</Link>
       </div>
     );
   }
 }
-
 ProductDetail.propTypes = {
+  addProduct: PropTypes.func.isRequired,
   location: PropTypes.shape({
     state: PropTypes.objectOf(PropTypes.any),
   }).isRequired,
 };
-
 export default ProductDetail;

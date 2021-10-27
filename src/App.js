@@ -9,7 +9,6 @@ import './App.css';
 export class App extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       products: [],
       currentCategory: '',
@@ -88,6 +87,7 @@ export class App extends Component {
               <ProductDetail
                 { ...props }
                 currentCategory={ currentCategory }
+                addProduct={ this.addProduct }
               />) }
           />
         </Switch>
@@ -95,5 +95,4 @@ export class App extends Component {
     );
   }
 }
-
 export default App;
