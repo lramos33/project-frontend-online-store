@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import CartComponent from '../components/CartComponent';
 
 export class ShoppingCart extends Component {
   render() {
@@ -9,17 +10,12 @@ export class ShoppingCart extends Component {
     }
     return (
       shopCart.map((cartItem, index) => (
-        <div key={ index }>
-          <p data-testid="shopping-cart-product-name">{cartItem.title}</p>
-          <img width="150px" src={ cartItem.thumbnail } alt="Imagem do Produto" />
-          <p>{cartItem.price}</p>
-          <span data-testid="shopping-cart-product-quantity">1</span>
-        </div>
+        <CartComponent key={ index } cartItem={ cartItem } />
       ))
     );
   }
 }
-//
+
 ShoppingCart.propTypes = {
   shopCart: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
