@@ -48,15 +48,20 @@ main {
 
 .cardBox {
   display: flex;
-  flex-direction: row;
+  flex-flow: row;
   flex-wrap: wrap;
-  width:70%;
+  width: 70%;
 }
 
 .productCardWrapper {
+  border: 1px solid black;
   flex-basis: 100px;
   flex-shrink: 0;
+<<<<<<< HEAD
   border: 1px solid black;
   height:500px;
 
+=======
+  height: 500px;
+>>>>>>> 68ce8ba0d18efb18ecdaf74b144f4647e0b7a6c0
 }

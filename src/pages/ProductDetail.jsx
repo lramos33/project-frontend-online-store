@@ -1,28 +1,48 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { getProductsFromCategoryAndQuery } from '../services/api';
 
 class ProductDetail extends Component {
   constructor(props) {
     super(props);
-    // const { location: { state: productInfo } } = this.props;
-    console.log(this.props);
-    // this.state = {
-    //   productObject: productInfo,
-    // };
+    this.state = {
+      productObject: {},
+    };
+  }
+
+  componentDidMount() {
+    this.fetchProduct();
+  }
+
+  fetchProduct = async () => {
+    const {
+      location: {
+        state: {
+          category_id: categoryId,
+          title,
+        },
+      },
+    } = this.props;
+    const thatProduct = await getProductsFromCategoryAndQuery(categoryId, title);
+    if (thatProduct) {
+      this.setState({
+        productObject: thatProduct.results[0],
+      });
+    }
   }
 
   render() {
-    // const {
-    // productObject: { currency_id: currencyId, price, thumbnail, title } } = this.state;
+    const {
+      productObject: { currency_id: currencyId, price, thumbnail, title } } = this.state;
     return (
       <div>
-        {/* <h2 data-testid="product-detail-name">
+        <h2 data-testid="product-detail-name">
           { title }
         </h2>
         <h3>
           {`${currencyId} ${price}`}
         </h3>
-        <img src={ thumbnail } alt={ title } /> */}
+        <img src={ thumbnail } alt={ title } />
       </div>
     );
   }

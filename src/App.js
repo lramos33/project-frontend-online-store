@@ -14,13 +14,21 @@ export class App extends Component {
       products: [],
       currentCategory: '',
       shopCart: [],
+      searchInput: '',
     };
   }
 
   componentDidUpdate(_prevProps, prevState) {
-    const { currentCategory } = this.state;
+    const { currentCategory, searchInput } = this.state;
     if (currentCategory !== prevState.currentCategory) {
-      this.fetchProductAPI(currentCategory, '');
+      this.fetchProductAPI(currentCategory, searchInput);
+    }
+  }
+
+  handleChange = (whichInput) => {
+    const { value } = whichInput.target;
+    if (value || value === '') {
+      this.setState({ searchInput: value });
     }
   }
 
@@ -48,7 +56,7 @@ export class App extends Component {
   }
 
   render() {
-    const { products, shopCart, currentCategory } = this.state;
+    const { products, shopCart, currentCategory, searchInput } = this.state;
     return (
       <BrowserRouter>
         <Switch>
@@ -63,6 +71,8 @@ export class App extends Component {
                 categoryClick={ this.onClickCategory }
                 currentCategory={ currentCategory }
                 addProduct={ this.addProduct }
+                handleChanger={ this.handleChange }
+                searchProduct={ searchInput }
               />
             ) }
           />
@@ -77,7 +87,6 @@ export class App extends Component {
             render={ (props) => (
               <ProductDetail
                 { ...props }
-                fetcher={ this.fetchProductAPI }
                 currentCategory={ currentCategory }
               />) }
           />
