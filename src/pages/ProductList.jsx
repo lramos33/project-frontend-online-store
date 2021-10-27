@@ -5,23 +5,15 @@ import ProductCard from '../components/ProductCard';
 import Categories from '../components/Categories';
 
 class ProductList extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      searchInput: '',
-    };
-  }
-
-  handleChange = (whichInput) => {
-    const { value } = whichInput.target;
-    if (value || value === '') {
-      this.setState({ searchInput: value });
-    }
-  }
-
   render() {
-    const { products, fetcher, categoryClick, currentCategory, addProduct } = this.props;
-    const { searchInput } = this.state;
+    const {
+      products,
+      fetcher,
+      categoryClick,
+      currentCategory,
+      addProduct,
+      handleChanger,
+      searchProduct } = this.props;
     return (
       <div>
         <header>
@@ -29,12 +21,12 @@ class ProductList extends Component {
             data-testid="query-input"
             type="text"
             name="sometext"
-            onChange={ this.handleChange }
+            onChange={ (target) => handleChanger(target) }
           />
           <button
             data-testid="query-button"
             type="submit"
-            onClick={ () => fetcher(currentCategory, searchInput) }
+            onClick={ () => fetcher(currentCategory, searchProduct) }
           >
             Procurar
           </button>
@@ -64,9 +56,11 @@ ProductList.propTypes = {
   fetcher: PropTypes.func.isRequired,
   categoryClick: PropTypes.func.isRequired,
   addProduct: PropTypes.func.isRequired,
+  handleChanger: PropTypes.func.isRequired,
   products: PropTypes
     .arrayOf(PropTypes.object).isRequired,
   currentCategory: PropTypes.string,
+  searchProduct: PropTypes.string.isRequired,
 };
 
 ProductList.defaultProps = {
