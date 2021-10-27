@@ -79,7 +79,6 @@ export class App extends Component {
             render={ (props) => (
               <ProductDetail
                 { ...props }
-                fetcher={ this.fetchProductAPI }
                 currentCategory={ currentCategory }
               />) }
           />
