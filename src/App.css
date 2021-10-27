@@ -55,7 +55,8 @@ main {
 
 .productCardWrapper {
   flex-basis: 100px;
-  height:500px;
   flex-shrink: 0;
   border: 1px solid black;
+  height:500px;
+
 }
