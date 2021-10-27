@@ -21,12 +21,15 @@ class ProductCard extends Component {
             <p>{whichProduct.price}</p>
           </div>
         </Link>
-        <AddCart whichProduct={ whichProduct } addProduct={ addProduct } />
+        <AddCart
+          testID="product-add-to-cart"
+          whichProduct={ whichProduct }
+          addProduct={ addProduct }
+        />
       </div>
     );
   }
 }
-
 ProductCard.propTypes = {
   addProduct: PropTypes.func.isRequired,
   whichProduct: PropTypes.shape({
@@ -36,5 +39,4 @@ ProductCard.propTypes = {
     id: PropTypes.string,
   }).isRequired,
 };
-
 export default ProductCard;
