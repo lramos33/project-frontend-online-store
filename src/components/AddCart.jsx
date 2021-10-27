@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 
 class AddCart extends Component {
   render() {
-    const { addProduct, whichProduct } = this.props;
+    const { addProduct, whichProduct, testID } = this.props;
     return (
       <button
-        data-testid="product-add-to-cart"
+        data-testid={ testID }
         type="button"
         onClick={ () => addProduct(whichProduct) }
       >
@@ -15,8 +15,8 @@ class AddCart extends Component {
     );
   }
 }
-
 AddCart.propTypes = {
+  testID: PropTypes.string.isRequired,
   addProduct: PropTypes.func.isRequired,
   whichProduct: PropTypes.shape({
     price: PropTypes.number,
@@ -25,5 +25,4 @@ AddCart.propTypes = {
     id: PropTypes.string,
   }).isRequired,
 };
-
 export default AddCart;
