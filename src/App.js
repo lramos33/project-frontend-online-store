@@ -18,10 +18,33 @@ export class App extends Component {
     };
   }
 
+  componentDidMount() {
+    this.getLocalStorage();
+  }
+
   componentDidUpdate(_prevProps, prevState) {
-    const { currentCategory, searchInput } = this.state;
+    const { currentCategory, searchInput, shopCart } = this.state;
     if (currentCategory !== prevState.currentCategory) {
       this.fetchProductAPI(currentCategory, searchInput);
+    }
+    if (shopCart !== prevState.shopCart) {
+      this.saveShopCart(shopCart);
+    }
+  }
+
+  addProduct = (product) => {
+    const { shopCart } = this.state;
+    this.setState({
+      shopCart: [...shopCart, product],
+    });
+  }
+
+  getLocalStorage = () => {
+    const retrievedCart = this.readSavedCart();
+    if (retrievedCart && retrievedCart.length) {
+      this.setState({
+        shopCart: retrievedCart,
+      });
     }
   }
 
@@ -42,7 +65,6 @@ export class App extends Component {
     }
   };
 
-  // Requisito 06
   onClickCategory = ({ target }) => {
     const { id } = target;
     this.setState({
@@ -50,10 +72,10 @@ export class App extends Component {
     });
   }
 
-  addProduct = async (product) => {
-    const { shopCart } = this.state;
-    this.setState({ shopCart: [...shopCart, product] });
-  }
+  saveShopCart = (shopCart) => localStorage
+    .setItem('saved_cart', JSON.stringify(shopCart));
+
+  readSavedCart = () => JSON.parse(localStorage.getItem('saved_cart'));
 
   render() {
     const { products, shopCart, currentCategory, searchInput } = this.state;
@@ -73,13 +95,19 @@ export class App extends Component {
                 addProduct={ this.addProduct }
                 handleChanger={ this.handleChange }
                 searchProduct={ searchInput }
+                readSavedCart={ this.readSavedCart }
+                shopCart={ shopCart }
               />
             ) }
           />
           <Route
             exact
             path="/shopping-cart"
-            render={ (props) => <ShoppingCart { ...props } shopCart={ shopCart } /> }
+            render={ (props) => (<ShoppingCart
+              { ...props }
+              shopCart={ shopCart }
+              readSavedCart={ this.readSavedCart }
+            />) }
           />
           <Route
             exact
@@ -89,6 +117,8 @@ export class App extends Component {
                 { ...props }
                 currentCategory={ currentCategory }
                 addProduct={ this.addProduct }
+                readSavedCart={ this.readSavedCart }
+                shopCart={ shopCart }
               />) }
           />
           <Route
