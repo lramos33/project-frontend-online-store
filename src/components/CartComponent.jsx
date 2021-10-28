@@ -35,7 +35,7 @@ class CartComponent extends Component {
 
   changeQty = (sum) => {
     const { itemCount } = this.state;
-    
+
     if (sum) {
       this.setState({ itemCount: itemCount + 1 }, () => this.checkQuantity());
     } else {
@@ -45,7 +45,7 @@ class CartComponent extends Component {
 
   render() {
     const { cartItem } = this.props;
-    const { itemCount } = this.state;
+    const { itemCount, disableButtonAdd, disableButtonRemove } = this.state;
     return (
       <div>
         <button type="button">Remover</button>
@@ -55,7 +55,7 @@ class CartComponent extends Component {
           data-testid="product-increase-quantity"
           type="button"
           onClick={ () => this.changeQty(true) }
-          disabled={ !this.state.disableButtonAdd }
+          disabled={ !disableButtonAdd }
         >
           +
         </button>
@@ -64,7 +64,7 @@ class CartComponent extends Component {
           data-testid="product-decrease-quantity"
           type="button"
           onClick={ () => this.changeQty(false) }
-          disabled={ !this.state.disableButtonRemove }
+          disabled={ !disableButtonRemove }
         >
           -
         </button>
@@ -79,6 +79,7 @@ CartComponent.propTypes = {
     price: PropTypes.number,
     thumbnail: PropTypes.string,
     title: PropTypes.string,
+    available_quantity: PropTypes.number,
   }).isRequired,
 };
 
