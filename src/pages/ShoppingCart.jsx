@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import CartComponent from '../components/CartComponent';
 
 export class ShoppingCart extends Component {
@@ -9,9 +10,18 @@ export class ShoppingCart extends Component {
       return <p data-testid="shopping-cart-empty-message">Seu carrinho está vazio</p>;
     }
     return (
-      shopCart.map((cartItem, index) => (
-        <CartComponent key={ index } cartItem={ cartItem } />
-      ))
+      <div>
+        {shopCart.map((cartItem, index) => (
+          <CartComponent
+            key={ index }
+            cartItem={ cartItem }
+          />
+        ))}
+        <Link to="/checkout" data-testid="checkout-products">
+          checkout
+        </Link>
+      </div>
+
     );
   }
 }

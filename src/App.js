@@ -5,6 +5,7 @@ import ProductList from './pages/ProductList';
 import { ShoppingCart } from './pages/ShoppingCart';
 import { getProductsFromCategoryAndQuery } from './services/api';
 import './App.css';
+import Checkout from './pages/Checkout';
 
 export class App extends Component {
   constructor(props) {
@@ -89,6 +90,14 @@ export class App extends Component {
                 currentCategory={ currentCategory }
                 addProduct={ this.addProduct }
               />) }
+          />
+          <Route
+            exact
+            path="/checkout"
+            render={ (props) => (<Checkout
+              { ...props }
+              shopCart={ shopCart }
+            />) }
           />
         </Switch>
       </BrowserRouter>
