@@ -6,21 +6,46 @@ class CartComponent extends Component {
     super(props);
     this.state = {
       itemCount: 1,
+      disableButtonAdd: 'ativo',
+      disableButtonRemove: 'ativo',
     };
+  }
+
+  componentDidMount() {
+    this.checkQuantity();
+  }
+
+  checkQuantity = () => {
+    const { cartItem } = this.props;
+    const { itemCount } = this.state;
+    const minItens = 0;
+
+    if (cartItem.available_quantity === itemCount) {
+      this.setState({ disableButtonAdd: '' });
+    } else {
+      this.setState({ disableButtonAdd: 'ativo' });
+    }
+
+    if (itemCount === minItens) {
+      this.setState({ disableButtonRemove: '' });
+    } else {
+      this.setState({ disableButtonRemove: 'ativo' });
+    }
   }
 
   changeQty = (sum) => {
     const { itemCount } = this.state;
+
     if (sum) {
-      this.setState({ itemCount: itemCount + 1 });
+      this.setState({ itemCount: itemCount + 1 }, () => this.checkQuantity());
     } else {
-      this.setState({ itemCount: itemCount - 1 });
+      this.setState({ itemCount: itemCount - 1 }, () => this.checkQuantity());
     }
   }
 
   render() {
     const { cartItem } = this.props;
-    const { itemCount } = this.state;
+    const { itemCount, disableButtonAdd, disableButtonRemove } = this.state;
     return (
       <div>
         <button type="button">Remover</button>
@@ -30,6 +55,7 @@ class CartComponent extends Component {
           data-testid="product-increase-quantity"
           type="button"
           onClick={ () => this.changeQty(true) }
+          disabled={ !disableButtonAdd }
         >
           +
         </button>
@@ -38,6 +64,7 @@ class CartComponent extends Component {
           data-testid="product-decrease-quantity"
           type="button"
           onClick={ () => this.changeQty(false) }
+          disabled={ !disableButtonRemove }
         >
           -
         </button>
@@ -52,6 +79,7 @@ CartComponent.propTypes = {
     price: PropTypes.number,
     thumbnail: PropTypes.string,
     title: PropTypes.string,
+    available_quantity: PropTypes.number,
   }).isRequired,
 };
 
