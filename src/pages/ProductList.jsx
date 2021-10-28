@@ -5,6 +5,11 @@ import ProductCard from '../components/ProductCard';
 import Categories from '../components/Categories';
 
 class ProductList extends Component {
+  componentDidMount() {
+    const { readSavedCart } = this.props;
+    readSavedCart();
+  }
+
   render() {
     const {
       products,
@@ -13,7 +18,9 @@ class ProductList extends Component {
       currentCategory,
       addProduct,
       handleChanger,
-      searchProduct } = this.props;
+      searchProduct,
+      shopCart,
+    } = this.props;
     return (
       <div>
         <header>
@@ -34,6 +41,7 @@ class ProductList extends Component {
             Digite algum termo de pesquisa ou escolha uma categoria.
           </h3>
           <Link data-testid="shopping-cart-button" to="/shopping-cart">Carrinho</Link>
+          <p data-testid="shopping-cart-size">{shopCart.length}</p>
         </header>
         <main>
           <Categories clickFunc={ categoryClick } />
@@ -53,6 +61,8 @@ class ProductList extends Component {
 }
 
 ProductList.propTypes = {
+  readSavedCart: PropTypes.func.isRequired,
+  shopCart: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.any)).isRequired,
   fetcher: PropTypes.func.isRequired,
   categoryClick: PropTypes.func.isRequired,
   addProduct: PropTypes.func.isRequired,

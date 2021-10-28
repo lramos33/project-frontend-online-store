@@ -13,7 +13,9 @@ class ProductDetail extends Component {
   }
 
   componentDidMount() {
+    const { readSavedCart } = this.props;
     this.fetchProduct();
+    readSavedCart();
   }
 
   fetchProduct = async () => {
@@ -36,7 +38,8 @@ class ProductDetail extends Component {
   render() {
     const { productObject } = this.state;
     const { currency_id: currencyId, price, thumbnail, title } = productObject;
-    const { addProduct } = this.props;
+    const { addProduct, shopCart } = this.props;
+
     return (
       <div>
         <h2 data-testid="product-detail-name">
@@ -52,12 +55,15 @@ class ProductDetail extends Component {
           addProduct={ addProduct }
         />
         <Link data-testid="shopping-cart-button" to="/shopping-cart">Carrinho</Link>
+        <p data-testid="shopping-cart-size">{shopCart.length}</p>
       </div>
     );
   }
 }
 ProductDetail.propTypes = {
+  shopCart: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.any)).isRequired,
   addProduct: PropTypes.func.isRequired,
+  readSavedCart: PropTypes.func.isRequired,
   location: PropTypes.shape({
     state: PropTypes.objectOf(PropTypes.any),
   }).isRequired,
