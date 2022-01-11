@@ -10,6 +10,12 @@ Clone o repositório:
 git clone git@github.com:lramos33/project-frontend-online-store.git
 ```
 
+Acesse a pasta do repositório
+
+```
+cd project-frontend-online-store
+```
+
 Instale as dependências:
 ```
 npm install
