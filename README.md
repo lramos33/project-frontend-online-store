@@ -59,7 +59,10 @@ Esse foi um projeto em grupo na qual desenvolvemos uma versão simplificada de u
 - [x] 9. Adicione um produto ao carrinho a partir de sua tela de exibição detalhada;
 - [x] 10. Visualize a lista de produtos adicionados ao carrinho em sua página e permita a manipulação da sua quantidade;
 - [x] 11. Avalie e comente acerca de um produto em sua tela de exibição detalhada;
-- [x] 12. Finalize a compra vendo um resumo dela, preenchendo os seus dados e escolhendo a forma de pagamento;
+- [x] 12. Finalize a compra vendo um resumo dela, preenchendo os seus dados e escolhendo a forma de pagamento.
+
+#### Requisitos bônus:
+
 - [x] 13. Mostre junto ao ícone do carrinho a quantidade de produtos dentro dele, em todas as telas em que ele aparece;
 - [x] 14. Limite a quantidade de produtos adicionados ao carrinho pela quantidade disponível em estoque;
 - [x] 15. Mostre quais produtos tem o frete grátis.
