@@ -46,25 +46,38 @@ Esse foi um projeto em grupo na qual desenvolvemos uma versão simplificada de u
 
 ![image]()
 
-## ✅ Requisitos do projeto
+## 📝 Requisitos do projeto
 
 - [x] 1. Implemente o módulo de acesso à api do Mercado Livre;
+
 - [x] 2. Crie uma página de listagem de produtos vazia;
+
 - [x] 3. Crie a página do carrinho de compras;
+
 - [x] 4. Liste as categorias de produtos disponíveis via API na página principal;
+
 - [x] 5. Liste os produtos buscados por termos, com os dados resumidos, associados a esses termos;
+
 - [x] 6. Selecione uma categoria e mostre somente os produtos daquela categoria;
+
 - [x] 7. Redirecione para uma tela com a exibição detalhada ao clicar na exibição resumida de um produto;
+
 - [x] 8. Adicione produtos a partir da tela de listagem de produtos;
+
 - [x] 9. Adicione um produto ao carrinho a partir de sua tela de exibição detalhada;
+
 - [x] 10. Visualize a lista de produtos adicionados ao carrinho em sua página e permita a manipulação da sua quantidade;
+
 - [x] 11. Avalie e comente acerca de um produto em sua tela de exibição detalhada;
+
 - [x] 12. Finalize a compra vendo um resumo dela, preenchendo os seus dados e escolhendo a forma de pagamento.
 
 #### Requisitos bônus:
 
 - [x] 13. Mostre junto ao ícone do carrinho a quantidade de produtos dentro dele, em todas as telas em que ele aparece;
+
 - [x] 14. Limite a quantidade de produtos adicionados ao carrinho pela quantidade disponível em estoque;
+
 - [x] 15. Mostre quais produtos tem o frete grátis.
 
 ##
