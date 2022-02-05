@@ -72,7 +72,7 @@ Esse foi um projeto em grupo na qual desenvolvemos uma versão simplificada de u
 
 - [x] 12. Finalize a compra vendo um resumo dela, preenchendo os seus dados e escolhendo a forma de pagamento.
 
-#### Requisitos bônus:
+### Requisitos bônus:
 
 - [x] 13. Mostre junto ao ícone do carrinho a quantidade de produtos dentro dele, em todas as telas em que ele aparece;
 
