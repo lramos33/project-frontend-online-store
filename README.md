@@ -1,6 +1,6 @@
 <h1 align="center">Project Frontend Online Store</h1>
 
-<p align="center">✅ Concluded</p>
+<p align="center">✔️ Concluded</p>
 
 ## 💻 Instalando o projeto
 
