@@ -44,8 +44,6 @@ Esse foi um projeto em grupo na qual desenvolvemos uma versão simplificada de u
 - Visualizar detalhes e avaliações prévias de um produto, bem como criar novas avaliações;
 - E por fim, finalizar a compra (simulada) dos itens selecionados.
 
-![image]()
-
 ## 📝 Requisitos do projeto
 
 - [x] 1. Implemente o módulo de acesso à api do Mercado Livre;
